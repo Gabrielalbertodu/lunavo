@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000a15">
+  <title>Área do operador | Lunavo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="lunavo.css">
+</head>
+<body class="operator-page">
+  <header>
+    <div class="wrap">
+      <a class="logo" href="Lunavo%20%E2%80%93%20Site%20inicial.html"><i aria-hidden="true"></i>Lunavo <span>Operações</span></a>
+      <a class="operator-back" href="Lunavo%20%E2%80%93%20Site%20inicial.html">Área do cliente</a>
+    </div>
+  </header>
+
+  <main class="operator-shell">
+    <section class="operator-login" id="loginView" aria-labelledby="loginTitle">
+      <span class="tag">Acesso institucional</span>
+      <h1 id="loginTitle">Área do operador</h1>
+      <p class="sub">Entre para acompanhar as unidades e a demanda assistencial.</p>
+      <form id="loginForm">
+        <label for="username">Usuário</label>
+        <input id="username" name="username" autocomplete="username" required>
+        <label for="password">Senha</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <p class="login-error" id="loginError" role="alert" hidden>Usuário ou senha incorretos.</p>
+        <button class="btn login-submit" type="submit">Entrar no painel</button>
+      </form>
+      <p class="login-note">Protótipo demonstrativo. Os dados do painel são simulados.</p>
+    </section>
+
+    <section id="dashboardView" class="operator-dashboard" aria-labelledby="dashboardTitle" hidden>
+      <div class="dashboard-heading">
+        <div>
+          <span class="tag">Monitoramento institucional</span>
+          <h1 id="dashboardTitle">Visão geral</h1>
+          <p class="sub">Indicadores simulados, atualizados automaticamente.</p>
+        </div>
+        <div class="dashboard-actions">
+          <span class="live">Atualizado <time id="lastUpdate">--:--:--</time></span>
+          <button class="btn ghost" id="logoutButton" type="button">Sair</button>
+        </div>
+      </div>
+
+      <div class="grid4 operator-kpis" aria-live="polite">
+        <article class="panel kpi"><small>Pacientes aguardando</small><div class="big" id="waitingValue">--</div><span class="metric-note" id="waitingTrend">em todas as unidades</span></article>
+        <article class="panel kpi"><small>Ocupação média</small><div class="big" id="occupancyValue">--%</div><span class="metric-note">capacidade instalada</span></article>
+        <article class="panel kpi"><small>Espera média</small><div class="big" id="waitValue">-- min</div><span class="metric-note">estimativa atual</span></article>
+        <article class="panel kpi"><small>Unidades em alerta</small><div class="big alert-value" id="alertValue">--</div><span class="metric-note">ocupação acima de 80%</span></article>
+      </div>
+
+      <div class="operator-content-grid">
+        <article class="panel operator-chart-panel">
+          <div class="ph"><div><b>Demanda nas próximas horas</b><div class="meta">Previsão agregada das unidades</div></div><span class="tag">Hoje</span></div>
+          <div class="demand-chart" id="demandChart" role="img" aria-label="Gráfico simulado de demanda nas próximas horas"></div>
+        </article>
+        <article class="panel recommendation-panel">
+          <span class="tag">Atenção operacional</span>
+          <h2>Recomendação</h2>
+          <p id="recommendation">Carregando recomendação...</p>
+          <div class="recommendation-stat"><span>Próximo pico previsto</span><b id="peakValue">--:--</b></div>
+          <div class="recommendation-stat"><span>Atendimentos na última hora</span><b id="servedValue">--</b></div>
+        </article>
+      </div>
+
+      <article class="panel unit-panel">
+        <div class="ph"><div><b>Situação das unidades</b><div class="meta">Atualização automática a cada 3 segundos</div></div><span class="live">Ao vivo</span></div>
+        <div class="unit-table-wrap">
+          <table class="unit-table">
+            <thead><tr><th>Unidade</th><th>Ocupação</th><th>Aguardando</th><th>Espera estimada</th><th>Status</th></tr></thead>
+            <tbody id="unitRows"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer><div class="wrap">Lunavo · Protótipo acadêmico · Informações demonstrativas, não utilizadas para decisões clínicas.</div></footer>
+  <script src="operador.js"></script>
+</body>
+</html>
